@@ -1,0 +1,148 @@
+import java.util.*;
+import java.io.*;
+
+//컴퓨터공학부 202102351 이나경
+//여러 한류 분야 중 케이팝에 대해 자세하게 적었습니다.
+
+public class K_POP extends Kor_wave { //클래스 상속
+    K_POP(String name, int year){
+        this.name = name;
+        this.year = year;
+    }
+
+    
+    public static void main(String[] args) throws Exception{
+        
+        
+        //인터페이스를 이용한 소개문
+        Intro kpop= new Introduce(); 
+        kpop.start();
+    
+        kpop.intro(5);
+        System.out.println("");
+        
+        //클래스 상속을 이용하여 가수와 데뷔 연도 소개
+        System.out.println("[가수 & 데뷔]");	
+        K_POP group1 = new K_POP("KARA", 2007);
+        K_POP group2 = new K_POP("EXO", 2012);
+        K_POP group3 = new K_POP("BTS", 2013);
+        K_POP group4 = new K_POP("RedVelvet", 2014);
+        K_POP group5 = new K_POP("BlackPink", 2016);
+        
+
+        group1.Print();
+        group2.Print();
+        group3.Print();
+        group4.Print();
+        group5.Print();
+
+        System.out.println("");	
+
+
+        //컬렉션 프레임워크를 이용하여 가수와 대표곡 매칭
+        Map<String, String>list = new HashMap<String, String>();
+	
+        list.put("KARA", "Mister");
+        list.put("EXO", "Love Shot");
+        list.put("BTS", "Dynamite");
+        list.put("RedVelvet", "Bad boy");
+        list.put("BlackPink", "DDU-DU DDU-DU");
+
+        
+        //참조타입(배열)을 이용하여 가장 높은 조회수를 기록한 가수와 조회수 출력
+        String[] stringArray = {"KARA", "EXO", "BTS", "RedVelvet", "BlackPink"};
+        double[] doubleArray = {0.36, 0.37, 16, 5.4, 19};
+
+		double max=0;
+        int max_index = 0;
+		System.out.println("[MV 조회수]");	
+	
+		for(int i=0; i<5; i++) {  
+			if(doubleArray[i] > max)                  
+				max = doubleArray[i];
+                max_index = i;
+		}
+		System.out.println("가장 많은 조회수는 " + stringArray[max_index] + "의 " + max + "억회입니다.");
+
+        System.out.println("");
+
+        //다형성을 이용하여 각 그룹의 멤버 소개
+        System.out.println("[멤버 구성원]");	
+        member name = new member();
+        System.out.print("KARA: ");
+        name.mem();
+        System.out.print("EXO: ");
+        member name2= new member2();
+        name2.mem();
+        System.out.print("RedVelvet: ");
+        member3 name3 = new member3();
+        name3.mem();
+        System.out.print("BTS: ");
+        member4 name4 = new member4();
+        name4.mem();
+        System.out.print("BlackPink: ");
+        member5 name5 = new member5();
+        name5.mem();
+
+        System.out.println("");
+
+        kpop.stop();
+
+        System.out.println("");
+
+
+
+
+        //파일 입/출력 사용하여 좋아하는 가사를 적어 똑같이 출력
+        System.out.println("[가사]");	
+        InputStream is = System.in;
+        byte[] datas = new byte[100];
+        System.out.print("가장 좋아하는 가사 한 소절: ");
+        int commentBytes = is.read(datas);
+        String comment = new String(datas, 0, commentBytes-2);
+        System.out.println(comment);
+
+        System.out.println("");
+		  
+      
+      //예외처리(IOException)를 적어 해외팬들에게 하고 싶은 말을 적은 후 출력되게 함
+        System.out.println("[해외팬들에게 하고 싶은 말]");	
+        System.out.println("Say what you want to tell global KPOP fans in English.");
+		
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+		try {
+			InputStreamReader ir = new InputStreamReader(System.in);
+			BufferedReader br = new BufferedReader(ir);
+			
+			String a1 = br.readLine();
+			System.out.println(a1);
+		}catch(IOException ie) {		
+			System.out.println("IOException occured.");
+			System.exit(1);
+		}
+
+        System.out.println("");
+        
+    //위에 이용했던 컬렉션 프레임워크를 이용하여 가수 이름을 scanner로 입력받은 후 매칭되는 대표곡 출력
+        Scanner scanner = new Scanner(System.in);
+        while(true){
+            System.out.print("가수 대표곡 찾기 ");
+            String singer = scanner.next();
+            if (singer.equals("EXIT")){
+                System.out.println("Stop");
+                break;
+            }
+            String song = list.get(singer);
+            if (song == null){
+                System.out.println("Error");
+            }
+            else{
+                System.out.println(song);
+            }
+            scanner.close();
+        }
+ 
+    }
+}
+
