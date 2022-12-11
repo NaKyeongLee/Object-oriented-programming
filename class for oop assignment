@@ -1,0 +1,61 @@
+public interface Intro {
+  	void start();
+	void stop();
+	void intro(int num);
+}
+
+public class Introduce implements Intro {
+	public void start() {
+		System.out.println("지금부터 한류 중 전세계가 열광하는 KPOP 아이돌에 대해 소개하겠습니다.");
+	}
+
+	public void stop() {
+		System.out.println("이상 설명을 마치겠습니다.");
+	}
+
+    public void intro(int num){
+        System.out.println("총 " + num + "개의 그룹에 대해 소개하겠습니다.");
+    }
+}
+
+public class Kor_wave {
+    String name;
+    int year;
+    public void Print(){
+        System.out.println("한류 열풍을 이끈 대표적인 가수: " + name + "(" + year + "년 데뷔)");
+    }
+}
+
+public class member {
+	public void mem() {
+		System.out.println("지영, 니콜, 하라, 규리, 승연");
+	}
+}
+
+public class member2 extends member {
+	// 메소드 오버라이딩
+	public void mem() { 
+		System.out.println("수호, 찬열, 카이, 디오, 백현 등");
+	}
+}
+
+public class member3 extends member {
+	// 메소드 오버라이딩
+	public void mem() { 
+		System.out.println("예리, 아이린, 조이, 슬기, 웬디");
+	}
+}
+
+public class member4 extends member {
+	// 메소드 오버라이딩
+	public void mem() { 
+		System.out.println("진, 지민, RM, 슈가, 뷔, 정국, 제이홉");
+	}
+}
+
+public class member5 extends member {
+	// 메소드 오버라이딩
+	public void mem() { 
+		System.out.println("지수, 로제, 리사, 제니");
+	}
+}
